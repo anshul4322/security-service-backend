@@ -3,14 +3,17 @@ const mongoose = require("mongoose");
 
 const attendanceSchema = mongoose.Schema(
     {
-        site: {
+        siteId: {
           type: String,
           required: true
         },
-        attendenceDate: {
+        siteName: {
+          type: String,
+        },
+        attendanceDate: {
           type: String
         },
-        name: {
+        empName: {
           type: String,  
         },
         inTime: {
@@ -21,7 +24,10 @@ const attendanceSchema = mongoose.Schema(
         },
         dayReport: {
           type: String
-      }
+      },
+        empId: {
+          type: String
+    },
     },
     {
         timestamps: true,

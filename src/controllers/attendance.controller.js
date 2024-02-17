@@ -19,12 +19,20 @@ const getData = (async(req,res) => {
 })
 
 const deleteData = (async(req,res) => {
-    attendanceService.deleteAttendance(req.query._id);
+    attendanceService.deleteAttendance(req.body);
     return res.status(httpStatus.NO_CONTENT).send();
 })
+
+const updateAttendance = async (req, res) => {
+    const attendance = await attendanceService.updateAttendance(
+      req.body
+    );
+    return res.status(httpStatus.OK).send(attendance);
+};
 
 module.exports = {
     saveData,
     getData,
-    deleteData
+    deleteData,
+    updateAttendance
 };

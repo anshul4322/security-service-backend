@@ -1,8 +1,21 @@
 const mongoose = require("mongoose");
 
-const guardSchema = mongoose.Schema(
+const employeeSchema = mongoose.Schema(
     {
-        name: {
+        empId: {
+            type: String,
+            required: true,
+            unique: true
+        },
+        siteId: {
+            type: String,
+            required: true,
+            unique: true
+        },
+        siteName: {
+            type: String,
+        },
+        empName: {
           type: String,
         },
         phone: {
@@ -19,9 +32,6 @@ const guardSchema = mongoose.Schema(
         manType: {
             type: String
         },
-        currentWorking:{
-            type: String
-        },
         salary:{
             type: String
         },
@@ -34,10 +44,10 @@ const guardSchema = mongoose.Schema(
     }
 );
 
-const GuardData = mongoose.model("GuardData", guardSchema);
+const EmployeeData = mongoose.model("EmployeeData", employeeSchema);
 
-module.exports.GuardData = GuardData;
+module.exports.EmployeeData = EmployeeData;
 
 module.exports = {
-    GuardData,
+    EmployeeData,
 };
