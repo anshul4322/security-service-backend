@@ -5,7 +5,7 @@ const employeeDataRoute = require("./employeeData.route");
 const siteRoute = require("./site.route");
 const attendanceRoute = require("./attendance.route")
 
-const router = express.Router();
+const router = express.Router()
 
 router.use("/auth", authRoute);
 router.use("/users", userRoute);
