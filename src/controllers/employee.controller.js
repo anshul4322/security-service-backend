@@ -1,10 +1,10 @@
 const employeeService = require("../services/employee.service");
 const httpStatus = require("http-status");
 
-const saveData = (async(req,res) => {
+const saveEmployeeData = async(req,res) => {
     const data = await employeeService.createEmployeeData(req.body);
     res.status(httpStatus.CREATED).send({data})
-})
+}
 
 const getData = (async(req,res) => {
     let data;
@@ -18,6 +18,6 @@ const getData = (async(req,res) => {
 })
 
 module.exports = {
-    saveData,
+    saveEmployeeData,
     getData
 };

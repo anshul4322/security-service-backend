@@ -2,9 +2,9 @@ const {Attendance} = require('../models');
 const httpStatus  = require("http-status");
 const ApiError = require('../utils/ApiError');
 
-const createAttendanceData = async(body) =>{
+const createAttendanceData = async(att) =>{
     try{
-        data = await Attendance.insertMany(body.formValues);
+        data = await Attendance.insertMany(att);
     }catch(err){
         throw new ApiError(
             httpStatus.INTERNAL_SERVER_ERROR,
