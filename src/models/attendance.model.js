@@ -17,7 +17,8 @@ const attendanceSchema = mongoose.Schema(
         type: String,
       },
       attendanceDate: {
-        type: String
+        type: String,
+        required: true,
       },
       dayReport: {
         type: String
