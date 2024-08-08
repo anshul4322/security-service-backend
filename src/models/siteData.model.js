@@ -20,27 +20,22 @@ const siteSchema = mongoose.Schema(
     },
     siteAddress: {
       type: String,
-      required: true,
       trim: true
     },
     totalEmployees: {
       type: Number,
-      required: true,
       min: 0
     },
     estimatedCostPerMonth: {
       type: Number,
-      required: true,
       min: 0
     },
     compliance: {
       type: String,
-      required: true,
       enum: ['yes', 'no']
     },
     gstPercentage: {
       type: Number,
-      required: true,
       min: 0,
       max: 100
     },

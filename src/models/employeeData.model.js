@@ -9,10 +9,11 @@ const employeeSchema = mongoose.Schema(
     },
     siteId: {
       type: String,
-      required: true
+      required: true,
     },
     siteName: {
-      type: String
+      type: String,
+      required: true,
     },
     empName: {
       type: String,
@@ -20,12 +21,13 @@ const employeeSchema = mongoose.Schema(
     },
     gender: {
       type: String,
-      enum: ["male", "female", "other"]
+      required: true,
+      // enum: ["male", "female", "other"]
     },
     phone: {
       type: String,
+      trim: true,
       required: true,
-      trim: true
     },
     address: {
       type: String
@@ -35,17 +37,12 @@ const employeeSchema = mongoose.Schema(
     },
     designation: {
       type: String,
-      required: true,
     },
     salary: {
       type: Number,
       required: true,
     },
-    workingStatus: {
-      type: String,
-      enum: ["active", "inactive", "hold"]
-    },
-    registrationDate: {
+    joiningDate: {
       type: Date
     },
     uan: {
