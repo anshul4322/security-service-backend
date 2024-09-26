@@ -38,8 +38,26 @@ const createEmployeeData = async (employee) => {
         throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, "Internal Server Error. Please try again later.");
       }
     }
-  };
-  
+};
+
+const updateEmployee = async (empId, updatedData) => {
+  try {
+    const updatedEmployee = await EmployeeData.findOneAndUpdate(
+      { empId },
+      { $set: updatedData },
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedEmployee) {
+      throw new ApiError(httpStatus.NOT_FOUND, "Employee not found");
+    }
+
+    return updatedEmployee;
+  } catch (err) {
+    console.error("Error updating employee:", err);
+    throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, "Failed to update employee");
+  }
+};
 
 const getEmployeeData = (body) => {
     return EmployeeData.find();
@@ -47,5 +65,6 @@ const getEmployeeData = (body) => {
 
 module.exports = {
     createEmployeeData,
-    getEmployeeData
+    getEmployeeData,
+    updateEmployee
 }

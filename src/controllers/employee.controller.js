@@ -17,7 +17,19 @@ const getData = (async(req,res) => {
     }
 })
 
+const updateEmployeeData = async (req, res, next) => {
+    const { empId } = req.params;
+    const updatedData = req.body;
+    try {
+        const updatedEmployee = await employeeService.updateEmployee(empId, updatedData);
+        res.status(httpStatus.OK).json(updatedEmployee);
+    } catch (error) {
+        next(error);
+    }
+};
+
 module.exports = {
     saveEmployeeData,
+    updateEmployeeData,
     getData
 };
