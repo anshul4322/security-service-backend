@@ -18,7 +18,7 @@ const getData = catchAsync(async(req,res) => {
     }
 })
 
-const updateSiteData = async (req, res) => {
+const updateSiteData = async (req, res, next) => {
     const { siteId } = req.params;
     const updatedData = req.body;
     try {
@@ -29,8 +29,25 @@ const updateSiteData = async (req, res) => {
     }
 };
 
+const deleteSiteData = async (req, res, next) => {
+    const { siteId } = req.params;
+  
+    try {
+      const site = await siteService.deleteSite(siteId);
+  
+      if (!site) {
+        return res.status(httpStatus.NOT_FOUND).json({ message: 'Site not found' });
+      }
+
+      return res.status(httpStatus.OK).json({ message: 'Site deleted successfully.' });
+    } catch (error) {
+      next(error);
+    }
+};
+
 module.exports = {
     saveSiteData,
     getData,
-    updateSiteData
+    updateSiteData,
+    deleteSiteData
 };

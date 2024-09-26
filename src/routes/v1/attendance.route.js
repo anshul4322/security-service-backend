@@ -4,9 +4,8 @@ const auth = require("../../middlewares/auth");
 
 const router = express.Router();
 
-router.post("/postAttendance",auth, attendanceController.saveData)
-router.get("/getAttendance", attendanceController.getData)
+router.get("/getAttendance", auth, attendanceController.getData)
 router.delete("/", auth, attendanceController.deleteData)
-router.put("/daily",auth, attendanceController.updateAttendance);
+router.put("/dailyAttendance",auth, attendanceController.updateAttendance);
 
 module.exports = router;

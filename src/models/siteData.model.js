@@ -5,7 +5,6 @@ const siteSchema = mongoose.Schema(
     companyId: {
       type: String,
       required: true,
-      unique: true
     },
     siteId: {
       type: String,
@@ -16,7 +15,6 @@ const siteSchema = mongoose.Schema(
       type: String,
       required: true,
       trim: true,
-      unique: true
     },
     siteAddress: {
       type: String,

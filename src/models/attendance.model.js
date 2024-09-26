@@ -1,38 +1,46 @@
-const { date } = require("joi");
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const attendanceSchema = mongoose.Schema(
+const attendanceSchema = new mongoose.Schema({
+  siteId: {
+    type: String,
+    required: true,
+  },
+  empId: {
+    type: String,
+    required: true,
+  },
+  month: {
+    type: String,
+    required: true,
+  },
+  attendance: [
     {
-      empId: {
-        type: String
-      },
-      empName: {
-        type: String,  
-      },
-      siteId: {
-        type: String,
-        required: true
-      },
-      siteName: {
-        type: String,
-      },
       attendanceDate: {
-        type: String,
+        type: Date,
         required: true,
       },
       dayReport: {
-        type: String
+        type: String,
+        required: true,
+      },
     },
+  ],
+  totalAttendance: { 
+    type: Number, 
+    default: 0 
   },
-  {
-      timestamps: true,
+  salary: { 
+    type: Number, 
+    default: 0
+  },
+  settled: { 
+    type: String, 
+    default: 'no'
   }
-);
+}, {
+  timestamps: true,
+});
 
-const Attendance = mongoose.model("Attendance", attendanceSchema);
+const Attendance = mongoose.model('Attendance', attendanceSchema);
 
 module.exports.Attendance = Attendance;
-
-module.exports = {
-    Attendance,
-};
